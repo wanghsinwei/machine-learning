@@ -16164,12 +16164,49 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.cluster</span> <span class="k">import</span> <span class="n">adjusted_rand_score</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;customers.csv&quot;</span><span class="p">)</span>
+<span class="n">good_data_with_channel</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">log_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">good_data_with_channel</span><span class="p">[</span><span class="s1">&#39;Channel&#39;</span><span class="p">],</span> <span class="n">preds</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[30]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.6392126861074772</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>Comapring with the scatter plot in the Cluster Visualization section, the distribution of Hotel/Restaurant/Cafe customers to Retailer customers is highly similar the distribution of clustering results. According to the above scatter plot, the reasonable number of clusters is 2 which is same as what I chose in Question 7.</li>
+<li>Comapring with the scatter plot in the Cluster Visualization section, the distribution of Hotel/Restaurant/Cafe customers to Retailer customers is similar with the distribution of clustering results, but there exist some inconsistent points. The <strong>adjusted rand score</strong> between <em>customer segment</em> and <em>channel</em> is 0.639 which is not very close to 1. According to the above scatter plot, the reasonable number of clusters is 2 which is same as what I chose in Question 7.</li>
 <li>There is no customer segment that would be classified as purely 'Retailers' or 'Hotels/Restaurants/Cafes' because there are some 'Hotels/Restaurants/Cafes' points clustered as Cluster 0, and vice versa.</li>
 <li>I thought the Segment 0 represnets cafe, deli and grocery store, and Segment 1 represnets market. I would only say they are sort of consistent.</li>
 </ul>
